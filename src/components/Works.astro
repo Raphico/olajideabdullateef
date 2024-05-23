@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets"
+---
+
+<section
+  class="grid animate-fade-up grid-cols-1 gap-6 sm:grid-cols-2"
+  style={{ animationDelay: "0.30s", animationFillMode: "both" }}
+>
+  <div class="justif-center flex flex-col items-center gap-4">
+    <h3 class="text-center text-xl font-semibold tracking-tight">
+      Quantium Data Analytics Job Simulation (Python)
+    </h3>
+    <Image
+      src={"/og.png"}
+      alt=""
+      width={1000}
+      height={500}
+      quality="max"
+      class="bg-secondary/40 rounded-md shadow-sm transition-all duration-300 hover:opacity-70"
+      format="png"
+      decoding="async"
+      loading="lazy"
+    />
+    <p>
+      This project uses Python to perform customer segmentation analysis on
+      chips purchases for a supermarket chain. A/B testing is then carried out
+      to examine the effect of a new store layout on store performance.
+    </p>
+    <a href="" rel="noreferer" target="_blank" class="w-full">
+      <button
+        class="inline-flex h-10 w-full items-center justify-center whitespace-nowrap rounded-md bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90"
+      >
+        View Project
+      </button>
+    </a>
+  </div>
+</section>

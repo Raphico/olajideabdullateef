@@ -1,0 +1,32 @@
+---
+import { siteConfig } from "../config/site"
+---
+
+<header class="w-full">
+  <div
+    class="container flex max-w-5xl flex-col-reverse items-center justify-center gap-4 py-6 sm:flex-row sm:justify-between"
+  >
+    <p class="text-sm text-foreground/75">&copy; 2024. All rights reserved.</p>
+
+    <nav class="flex items-center gap-4">
+      <a
+        href={siteConfig.links.github}
+        rel="noreferer"
+        target="_blank"
+        class="text-sm text-foreground">Github</a
+      >
+      <a
+        href={siteConfig.links.linkedin}
+        rel="noreferer"
+        target="_blank"
+        class="text-sm text-foreground">Linkedin</a
+      >
+      <a
+        href={siteConfig.links.facebook}
+        rel="noreferer"
+        target="_blank"
+        class="text-sm text-foreground">Facebook</a
+      >
+    </nav>
+  </div>
+</header>
