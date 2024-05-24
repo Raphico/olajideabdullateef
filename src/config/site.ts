@@ -7,7 +7,7 @@ const links = {
 export const siteConfig = {
   name: "Olajide Abdullateef",
   description: "Olajide Abdullateef Personal Site.",
-  url: "https://olajideabdullateef.github.io",
-  ogImage: "https://olajideabdullateef.github.io/og.png",
+  url: "https://raphico.github.io/olajideabdullateef/",
+  ogImage: "https://raphico.github.io/olajideabdullateef/og.png",
   links,
 }
