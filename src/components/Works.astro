@@ -1,37 +1,61 @@
 ---
 import { Image } from "astro:assets"
+
+import type { Asset, EntryFieldTypes } from "contentful"
+import { contentfulClient } from "../lib/contentful"
+
+interface Project {
+  contentTypeId: "projects"
+  fields: {
+    title: EntryFieldTypes.Text
+    description: EntryFieldTypes.Text
+    image: Asset
+    githubLink: EntryFieldTypes.Symbol
+  }
+}
+
+const entries = await contentfulClient.getEntries<Project>({
+  content_type: "projects",
+})
 ---
 
 <section
   class="grid animate-fade-up grid-cols-1 gap-6 sm:grid-cols-2"
   style={{ animationDelay: "0.30s", animationFillMode: "both" }}
 >
-  <div class="flex flex-col gap-4">
-    <Image
-      src={"/olajideabdullateef/uttam.webp"}
-      alt=""
-      width={1000}
-      height={500}
-      quality="max"
-      class="bg-secondary/40 rounded-md shadow-sm transition-all duration-300 hover:opacity-70"
-      format="png"
-      decoding="async"
-      loading="lazy"
-    />
-    <h3 class="text-xl font-semibold tracking-tight">
-      Quantium Data Analytics Job Simulation (Python)
-    </h3>
-    <p>
-      This project uses Python to perform customer segmentation analysis on
-      chips purchases for a supermarket chain. A/B testing is then carried out
-      to examine the effect of a new store layout on store performance.
-    </p>
-    <a href="" rel="noreferer" target="_blank" class="w-full">
-      <button
-        class="inline-flex h-10 w-full items-center justify-center whitespace-nowrap rounded-md bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90"
-      >
-        View Project
-      </button>
-    </a>
-  </div>
+  {
+    entries.items.map((item) => {
+      const imageUrl = "https:" + item.fields.image.fields.file.url
+
+      return (
+        <div class="flex flex-col gap-4">
+          <Image
+            src={imageUrl}
+            alt={`cover image`}
+            width={1000}
+            height={500}
+            quality="max"
+            class="bg-secondary/40 rounded-md shadow-sm transition-all duration-300 hover:opacity-70"
+            format="png"
+            decoding="async"
+            loading="lazy"
+          />
+          <h3 class="text-lg font-semibold tracking-tight sm:text-xl">
+            {item.fields.title}
+          </h3>
+          <p>{item.fields.description}</p>
+          <a
+            href={item.fields.githubLink}
+            rel="noreferer"
+            target="_blank"
+            class="w-full"
+          >
+            <button class="inline-flex h-10 w-full items-center justify-center whitespace-nowrap rounded-md bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90">
+              View Project
+            </button>
+          </a>
+        </div>
+      )
+    })
+  }
 </section>
