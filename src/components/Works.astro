@@ -1,15 +1,16 @@
 ---
 import { Image } from "astro:assets"
 
-import type { Asset, EntryFieldTypes } from "contentful"
+import type { EntryFieldTypes } from "contentful"
 import { contentfulClient } from "../lib/contentful"
+import type { ContentfulImage } from "../lib/types"
 
 interface Project {
   contentTypeId: "projects"
   fields: {
     title: EntryFieldTypes.Text
     description: EntryFieldTypes.Text
-    image: Asset
+    image: EntryFieldTypes.AssetLink
     githubLink: EntryFieldTypes.Symbol
   }
 }
@@ -25,7 +26,8 @@ const entries = await contentfulClient.getEntries<Project>({
 >
   {
     entries.items.map((item) => {
-      const imageUrl = "https:" + item.fields.image.fields.file.url
+      const contentfulImage = item.fields.image as ContentfulImage
+      const imageUrl = "https:" + contentfulImage.fields.file.url
 
       return (
         <div class="flex flex-col gap-4">
