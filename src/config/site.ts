@@ -8,6 +8,6 @@ export const siteConfig = {
   name: "Olajide Abdullateef",
   description: "Olajide Abdullateef Personal Site.",
   url: "https://raphico.github.io/olajideabdullateef/",
-  ogImage: "https://raphico.github.io/olajideabdullateef/og.png",
+  ogImage: "https://olajideabdullateef.vercel.app/og.png",
   links,
 }
