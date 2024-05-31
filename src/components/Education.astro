@@ -1,0 +1,24 @@
+---
+import type { EntryFieldTypes } from "contentful"
+import H2 from "./H2.astro"
+import { contentfulClient } from "../lib/contentful"
+
+interface Project {
+  contentTypeId: "education"
+  fields: {
+    description: EntryFieldTypes.Text
+  }
+}
+
+const entries = await contentfulClient.getEntries<Project>({
+  content_type: "education",
+})
+---
+
+<section
+  class="flex max-w-xl animate-fade-up flex-col justify-start gap-4"
+  style={{ animationDelay: "0.50s", animationFillMode: "both" }}
+>
+  <H2>Education</H2>
+  <p>{entries.items[0].fields.description}</p>
+</section>
