@@ -2,9 +2,18 @@ import { defineConfig } from "astro/config"
 import tailwind from "@astrojs/tailwind"
 import sitemap from "@astrojs/sitemap"
 
+import vercel from "@astrojs/vercel/serverless"
+
 // https://astro.build/config
 export default defineConfig({
-  site: "https://olajideabdullateef.github.io",
-  base: "/olajideabdullateef",
   integrations: [tailwind(), sitemap()],
+  output: "server",
+  adapter: vercel({
+    isr: {
+      expiration: 60 * 60,
+    },
+    imagesConfig: {
+      sizes: [40, 500, 1000],
+    },
+  }),
 })
