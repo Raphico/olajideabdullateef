@@ -8,12 +8,5 @@ import vercel from "@astrojs/vercel/serverless"
 export default defineConfig({
   integrations: [tailwind(), sitemap()],
   output: "server",
-  adapter: vercel({
-    isr: {
-      expiration: 60 * 60,
-    },
-    imagesConfig: {
-      sizes: [40, 500, 1000],
-    },
-  }),
+  adapter: vercel(),
 })
