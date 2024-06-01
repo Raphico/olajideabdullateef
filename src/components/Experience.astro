@@ -9,7 +9,7 @@ import type { EntryFieldTypes } from "contentful"
 interface Project {
   contentTypeId: "experience"
   fields: {
-    description: EntryFieldTypes.RichText
+    content: EntryFieldTypes.RichText
   }
 }
 
@@ -19,13 +19,13 @@ const entries = await contentfulClient.getEntries<Project>({
 ---
 
 <section
-  class="flex max-w-xl animate-fade-up flex-col items-start gap-4"
+  class="flex animate-fade-up flex-col gap-2"
   style={{ animationDelay: "0.40s", animationFillMode: "both" }}
 >
-  <H2>Experience</H2>
+  <H2>Work Experience</H2>
   {
     entries.items.map((item) => (
-      <p set:html={documentToHtmlString(item.fields.description)} />
+      <article set:html={documentToHtmlString(item.fields.content)} />
     ))
   }
 </section>

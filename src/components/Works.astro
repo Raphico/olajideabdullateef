@@ -1,16 +1,14 @@
 ---
-import { Image } from "astro:assets"
+import H2 from "./H2.astro"
 
 import type { EntryFieldTypes } from "contentful"
 import { contentfulClient } from "../lib/contentful"
-import type { ContentfulImage } from "../lib/types"
 
 interface Project {
   contentTypeId: "projects"
   fields: {
     title: EntryFieldTypes.Text
     description: EntryFieldTypes.Text
-    image: EntryFieldTypes.AssetLink
     gitHubLink: EntryFieldTypes.Symbol
   }
 }
@@ -21,41 +19,28 @@ const entries = await contentfulClient.getEntries<Project>({
 ---
 
 <section
-  class="grid animate-fade-up grid-cols-1 gap-6 sm:grid-cols-2"
+  class="flex animate-fade-up flex-col gap-4"
   style={{ animationDelay: "0.30s", animationFillMode: "both" }}
 >
-  {
-    entries.items.map((item) => {
-      const contentfulImage = item.fields.image as ContentfulImage
-      const imageUrl = "https:" + contentfulImage.fields.file.url
-
-      return (
-        <div class="flex flex-col gap-4">
-          <Image
-            src={imageUrl}
-            alt={`cover image`}
-            width={1000}
-            height={500}
-            quality="max"
-            class="bg-secondary/40 rounded-md shadow-sm transition-all duration-300"
-            format="png"
-          />
-          <h3 class="text-lg font-semibold tracking-tight sm:text-xl">
-            {item.fields.title}
-          </h3>
-          <p>{item.fields.description}</p>
-          <a
-            href={item.fields.gitHubLink}
-            rel="noreferer"
-            target="_blank"
-            class="w-full"
-          >
-            <button class="inline-flex h-10 w-full items-center justify-center whitespace-nowrap rounded-md bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90">
+  <H2>Projects</H2>
+  <div class="flex flex-col gap-4">
+    {
+      entries.items.map((item) => {
+        return (
+          <div class="flex flex-col gap-2 tracking-tight">
+            <h3 class="text-lg font-semibold">{item.fields.title}</h3>
+            <p class="text-foreground/75">{item.fields.description}</p>
+            <a
+              href={item.fields.gitHubLink}
+              rel="noreferer"
+              target="_blank"
+              class="w-full text-blue-500 transition-colors hover:text-foreground"
+            >
               View Project
-            </button>
-          </a>
-        </div>
-      )
-    })
-  }
+            </a>
+          </div>
+        )
+      })
+    }
+  </div>
 </section>
