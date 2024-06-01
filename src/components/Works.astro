@@ -11,7 +11,7 @@ interface Project {
     title: EntryFieldTypes.Text
     description: EntryFieldTypes.Text
     image: EntryFieldTypes.AssetLink
-    githubLink: EntryFieldTypes.Symbol
+    gitHubLink: EntryFieldTypes.Symbol
   }
 }
 
@@ -37,17 +37,15 @@ const entries = await contentfulClient.getEntries<Project>({
             width={1000}
             height={500}
             quality="max"
-            class="bg-secondary/40 rounded-md shadow-sm transition-all duration-300 hover:opacity-70"
+            class="bg-secondary/40 rounded-md shadow-sm transition-all duration-300"
             format="png"
-            decoding="async"
-            loading="lazy"
           />
           <h3 class="text-lg font-semibold tracking-tight sm:text-xl">
             {item.fields.title}
           </h3>
           <p>{item.fields.description}</p>
           <a
-            href={item.fields.githubLink}
+            href={item.fields.gitHubLink}
             rel="noreferer"
             target="_blank"
             class="w-full"
