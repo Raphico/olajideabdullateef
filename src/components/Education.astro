@@ -1,12 +1,15 @@
 ---
-import type { EntryFieldTypes } from "contentful"
 import H2 from "./H2.astro"
+
 import { contentfulClient } from "../lib/contentful"
+
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
+import type { EntryFieldTypes } from "contentful"
 
 interface Project {
   contentTypeId: "education"
   fields: {
-    description: EntryFieldTypes.Text
+    description: EntryFieldTypes.RichText
   }
 }
 
@@ -20,5 +23,9 @@ const entries = await contentfulClient.getEntries<Project>({
   style={{ animationDelay: "0.50s", animationFillMode: "both" }}
 >
   <H2>Education</H2>
-  <p>{entries.items[0].fields.description}</p>
+  {
+    entries.items.map((item) => (
+      <p set:html={documentToHtmlString(item.fields.description)} />
+    ))
+  }
 </section>
