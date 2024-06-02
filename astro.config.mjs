@@ -3,14 +3,15 @@ import tailwind from "@astrojs/tailwind"
 import sitemap from "@astrojs/sitemap"
 
 import vercel from "@astrojs/vercel/serverless"
+import react from "@astrojs/react"
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), sitemap()],
+  integrations: [tailwind(), sitemap(), react()],
   output: "server",
   adapter: vercel({
     isr: {
-      expiration: 60 * 60,
+      expiration: 60 * 30,
     },
   }),
 })

@@ -16,6 +16,7 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         accent: "hsl(var(--accent))",
+        border: "hsl(var(--border))",
         "accent-foreground": "hsl(var(--accent-foreground))",
       },
       borderRadius: {
