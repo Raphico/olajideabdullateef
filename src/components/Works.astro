@@ -19,22 +19,22 @@ const entries = await contentfulClient.getEntries<Project>({
 ---
 
 <section
-  class="flex animate-fade-up flex-col gap-4"
+  class="flex animate-fade-up flex-col gap-6"
   style={{ animationDelay: "0.30s", animationFillMode: "both" }}
 >
   <H2>Projects</H2>
-  <div class="flex flex-col gap-4">
+  <div class="flex flex-col gap-6">
     {
       entries.items.map((item) => {
         return (
-          <div class="flex flex-col gap-2 tracking-tight">
+          <div class="flex flex-col items-start justify-start gap-2 tracking-tight">
             <h3 class="text-lg font-semibold">{item.fields.title}</h3>
             <p class="text-foreground/75">{item.fields.description}</p>
             <a
               href={item.fields.gitHubLink}
               rel="noreferer"
               target="_blank"
-              class="w-full text-blue-500 transition-colors hover:text-foreground"
+              class="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-md bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90 hover:text-foreground"
             >
               View Project
             </a>
