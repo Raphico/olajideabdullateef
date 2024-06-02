@@ -8,7 +8,7 @@ const options = {
     },
 
     [BLOCKS.UL_LIST]: (node, children) => {
-      return <ul className="list-disc space-y-2">{children}</ul>
+      return <ul className="ml-4 list-disc space-y-2">{children}</ul>
     },
 
     [BLOCKS.OL_LIST]: (node, children) => {
