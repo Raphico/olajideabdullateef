@@ -1,7 +1,6 @@
 ---
 import "../styles/globals.css"
 import { siteConfig } from "../config/site"
-import SiteHeader from "../components/SiteHeader.astro"
 import SiteFooter from "../components/SiteFooter.astro"
 ---
 
@@ -30,7 +29,6 @@ import SiteFooter from "../components/SiteFooter.astro"
   </head>
   <body class="bg-background font-body text-foreground antialiased">
     <div class="relative flex min-h-screen flex-col">
-      <SiteHeader />
       <main class="flex-1">
         <slot />
       </main>
