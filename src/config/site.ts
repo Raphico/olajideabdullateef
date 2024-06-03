@@ -10,7 +10,7 @@ const links = {
 export const siteConfig = {
   name: "Olajide Abdullateef",
   description: "Olajide Abdullateef Personal Site.",
-  url: "https://raphico.github.io/olajideabdullateef/",
-  ogImage: "https://olajideabdullateef.vercel.app/og.png",
+  url: "https://olajide.vercel.app/",
+  ogImage: "https://olajide.vercel.app/og.png",
   links,
 }
