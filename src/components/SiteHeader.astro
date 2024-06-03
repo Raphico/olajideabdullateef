@@ -1,22 +1,22 @@
 ---
-import { Image } from "astro:assets"
-
-import Github from "./Github.astro"
-import Linkedin from "./Linkedin.astro"
-import Facebook from "./Facebook.astro"
-import Twitter from "./Twitter.astro"
+import Github from "../assets/Github.astro"
+import Linkedin from "../assets/Linkedin.astro"
+import Facebook from "../assets/Facebook.astro"
+import Twitter from "../assets/Twitter.astro"
+import Gmail from "../assets/Gmail.astro"
 ---
 
 <header
   class="w-full animate-fade-up"
   style={{ animationDelay: "0.10s", animationFillMode: "both" }}
 >
-  <div class="container flex max-w-5xl items-center justify-end py-6">
+  <div class="container flex items-center justify-end py-6">
     <nav class="flex items-center gap-4">
       <Github />
       <Linkedin />
       <Facebook />
       <Twitter />
+      <Gmail />
     </nav>
   </div>
 </header>
