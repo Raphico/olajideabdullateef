@@ -3,6 +3,8 @@ const links = {
   github: "https://github.com/TheOlajide",
   linkedin: "https://ng.linkedin.com/in/olajideabdullateef",
   twitter: "https://x.com/TheOlajide",
+  gmail: "mailto:olajideabdullateef@gmail.com",
+  whatsapp: "https://wa.link/2lmgj9",
 }
 
 export const siteConfig = {
